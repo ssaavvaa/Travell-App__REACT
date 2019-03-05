@@ -583,7 +583,7 @@ footer {
 .container {
   max-width: auto;
   margin: auto;
-  visibility: hidden;
+  display: none;
 }
 
 .weather h2 {
@@ -607,7 +607,6 @@ footer {
 
 .weather {
   width: 200px;
-  height: 200px;
   padding: 40px;
   margin: 10px;
   background: rgba(48, 168, 152, 0);
@@ -693,6 +692,13 @@ footer {
   margin: 0 auto;
 }
 
+.possible {
+  font-size: 18px;
+  color: rgba(0, 26, 255, 0.5);
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
 #weather {
   display: flex;
   justify-content: space-around;
@@ -707,14 +713,15 @@ footer {
   height: 52px;
   border-radius: 4px;
   border: solid 2.5px #ffffff;
-  background-color: inherit;
   opacity: 0.73;
   font-family: Source Sans Pro;
   font-size: 25px;
   padding: 5px;
+  box-shadow: 0px 0px 3px black;
   letter-spacing: 1px;
-  text-align: left;
-  color: #ffffff;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.699);
+  background: white;
 }
 
 #button {
@@ -731,6 +738,10 @@ footer {
   color: #ffffff;
 }
 
+#button:hover {
+  cursor: pointer;
+}
+
 footer {
   width: 100%;
   height: 50px;
@@ -740,12 +751,40 @@ footer {
   justify-content: center;
   align-items: center;
   border-top: 1px solid orange;
+  background-color: white;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  margin-top: 100px;
+  box-shadow: inset 0px 0px 5px orange;
+  text-decoration: underline;
 }
 
 .datestyle {
   font-weight: 600;
   color: black;
   box-shadow: 0 4px 2px -2px rgba(128, 128, 128, 0.349);
+}
+
+#city::-webkit-input-placeholder {
+  text-align: center;
+}
+
+#city::-ms-input-placeholder {
+  text-align: center;
+}
+
+#city::placeholder {
+  text-align: center;
+}
+
+#warning {
+  margin: 0 auto;
+  max-width: 300px;
+  text-align: center;
+  font-size: 30px;
+  font-family: Montserrat;
+  color: red;
 }
 
 @media (max-width: 860px) {
@@ -779,9 +818,13 @@ footer {
     align-items: center;
   }
 
+  .travel {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
   .weather {
     padding: 10px 20px;
-    height: 100%;
   }
 
   .sectiontitle,

@@ -9,8 +9,10 @@ const createVenueHTML = (name, location, iconSource) => {
   
   const createWeatherHTML = (currentDay) => {
     return `<h2> Temp: ${currentDay.day.avgtemp_c} &#8451;</h2>
+    <h2> Temp: ${currentDay.day.avgtemp_f} &#8457;</h2>
       
       <img src="https://${currentDay.day.condition.icon}" class="weathericon" />
+      <p class="possible">${currentDay.day.condition.text}</p>
       <h2 class="datestyle">${currentDay.date}</h2>`;
   }
 
@@ -71,6 +73,7 @@ const getVenues = async() => {
   try{
     const response = await fetch(urlToFetch)
     if(response.ok){
+   
      const jsonResponse = await response.json()
      const venues = jsonResponse.response.groups[0].items.map(item => item.venue);
       console.log(venues)
@@ -78,6 +81,7 @@ const getVenues = async() => {
     }
   }
   catch(error){
+  
     console.log(error)
   }
 }
@@ -95,9 +99,12 @@ try {
   }
 }
   catch(error){
+   
     console.log(error)
   }
+
 }
+
 
 
 
@@ -115,21 +122,45 @@ const renderVenues = (venues) => {
 const renderForecast = (days) => {
   $weatherDivs.forEach(($day, index) => {
     const currentDay = days[index];
+    
     let weatherContent = createWeatherHTML(currentDay); 
     $day.append(weatherContent);
   
   });
 }
 
-const executeSearch = () => {
+
+
+
+
+
+let executeSearch = () => {
 
   $venueDivs.forEach(day => day.empty());
  $weatherDivs.forEach(day => day.empty());
   $destination.empty();
-   getVenues().then(venues => renderVenues(venues));
+
+  getVenues().then(venues => renderVenues(venues));
   getForecast().then(forecast => renderForecast(forecast));
-  $container.css("visibility", "visible");
+  const timing1 = () => {
+    setTimeout(() => {
+      if($('#destination').is(':empty')){
+        $container.fadeOut()
+        $('#warning').html("There is no such city or Country...")
+      }else{
+        $('#warning').html("")
+        $container.fadeIn()
+      }
+    }, 500);
+  }
+  timing1()
+  
+
+
+ 
   return false;
 }
+
+
 
 $submit.click(executeSearch)
