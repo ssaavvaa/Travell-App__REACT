@@ -4015,10 +4015,32 @@ table {
 
 header {
   text-align: center;
-  background: rgba(0, 0, 0, 0.781);
-  background-size: cover;
+  position: relative;
   text-align: center;
-  box-shadow: 0 4px 2px -2px gray;
+}
+
+.aside {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background: rgba(255, 166, 0, 0.651);
+  -webkit-clip-path: polygon(95% 0, 100% 0, 100% 100%);
+  clip-path: polygon(95% 0, 100% 0, 100% 100%);
+  z-index: -110;
+}
+
+.polygon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-clip-path: polygon(0% 0%, 0% 100%, 0 100%, 0 100%, 3% 100%, 60% 0, 0 77%, 13% 100%, 100% 100%, 95% 0);
+  clip-path: polygon(0% 0%, 0% 100%, 0 100%, 0 100%, 3% 100%, 60% 0, 0 77%, 13% 100%, 100% 100%, 95% 0);
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.781);
 }
 
 main {
@@ -4250,6 +4272,9 @@ footer {
 #button:hover {
   transition: all .3s ease-in-out;
   cursor: pointer;
+}
+
+#button:active {
   background-color: #27c127c0;
 }
 
