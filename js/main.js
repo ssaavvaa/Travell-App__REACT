@@ -135,23 +135,47 @@ const renderForecast = (days) => {
 
 
 let executeSearch = () => {
-
+  
   $venueDivs.forEach(day => day.empty());
  $weatherDivs.forEach(day => day.empty());
   $destination.empty();
+  $('#weather1').hide()
+  $('#weather2').hide()
+  $('#weather3').hide()
+  $('#weather4').hide()
+  $('#warning').hide()
+  $('#venue1').hide()
+  $('#venue2').hide()
+  $('#venue3').hide()
+  $('#venue4').hide()
+  $('#venue5').hide()
 
+ 
+  $('.container').hide()
   getVenues().then(venues => renderVenues(venues));
   getForecast().then(forecast => renderForecast(forecast));
+
   const timing1 = () => {
     setTimeout(() => {
       if($('#destination').is(':empty')){
         $container.fadeOut()
-        $('#warning').html("There is no such city or Country...")
+        $('#warning').fadeIn()
+        $('#warning').html("There is no such city or Country...or your internet connection is too Slow, try one more time...or Network unavailable at this time...or...something else happened :)")
       }else{
+        $('.container').show()
+        $('#weather1').fadeIn(500)
+        $('#weather2').fadeIn(700)
+        $('#weather3').fadeIn(900)
+        $('#weather4').fadeIn(1100)
+        $('#venue1').slideDown(600)
+        $('#venue2').slideDown(800)
+        $('#venue3').slideDown(1000)
+        $('#venue4').slideDown(1200)
+        $('#venue5').slideDown(1400)
         $('#warning').html("")
         $container.fadeIn()
       }
-    }, 500);
+    }, 700);
   }
   timing1()
   
