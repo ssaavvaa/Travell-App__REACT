@@ -4251,6 +4251,10 @@ footer {
   opacity: 1;
 }
 
+header {
+  margin-bottom: 30px;
+}
+
 #button {
   width: 140px;
   height: 52px;
